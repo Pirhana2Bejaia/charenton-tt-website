@@ -84,20 +84,27 @@ export default function AdminRencontres() {
         </div>
 
         {/* Aperçu */}
-        <div className="bg-gradient-to-b from-amber-500 to-amber-600 rounded-[2.5rem] p-8 md:p-12 shadow-xl border-[6px] border-club-blue h-[700px] overflow-y-auto relative">
-          <h3 className="font-bold text-amber-900 uppercase tracking-wider text-sm mb-6 border-b border-amber-600/50 pb-4 relative z-10">Aperçu en direct</h3>
+        <div className="bg-gradient-to-br from-slate-900 to-club-blue-dark rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-700/50 h-[700px] overflow-y-auto relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-club-blue rounded-full blur-3xl opacity-20 z-0" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-club-red rounded-full blur-3xl opacity-10 z-0" />
           
-          <div className="text-center space-y-6 relative z-10 py-8">
-            <h2 className="text-3xl font-black text-club-blue uppercase tracking-widest drop-shadow-sm mb-2">
-              PROCHAINES RENCONTRES
-            </h2>
-            <h3 className="text-2xl font-black text-club-blue uppercase tracking-widest drop-shadow-sm italic">
-              A CHARENTON
-            </h3>
+          <h3 className="font-bold text-slate-400 uppercase tracking-wider text-sm mb-6 border-b border-slate-700 pb-4 relative z-10">Aperçu en direct</h3>
+          
+          <div className="text-center relative z-10 py-4">
+            <div className="flex flex-col items-center justify-center mb-10">
+              <h2 className="text-2xl font-black text-white uppercase tracking-widest mb-2">
+                PROCHAINES RENCONTRES
+              </h2>
+              <div className="flex items-center gap-4">
+                <div className="h-0.5 w-8 bg-club-red rounded-full"></div>
+                <h3 className="text-lg font-bold text-blue-200 uppercase tracking-widest">
+                  A CHARENTON
+                </h3>
+                <div className="h-0.5 w-8 bg-club-red rounded-full"></div>
+              </div>
+            </div>
             
-            <div className="w-24 h-1.5 bg-club-blue mx-auto rounded-full my-8"></div>
-            
-            <div className="text-xl md:text-2xl font-bold text-club-blue leading-loose whitespace-pre-wrap">
+            <div className="text-lg font-medium leading-relaxed flex flex-col gap-1 text-slate-200">
               {content ? (
                 content.split('\n').map((line, i) => {
                   const isDateOrTime = line.toUpperCase().includes('VENDREDI') || 
@@ -105,19 +112,16 @@ export default function AdminRencontres() {
                                      line.toUpperCase().includes('DIMANCHE') || 
                                      (line.toUpperCase().includes('H') && /\d/.test(line));
                   return (
-                    <div key={i} className={isDateOrTime ? "text-red-600 my-4 text-2xl italic font-black" : "my-2 font-black italic"}>
+                    <div key={i} className={isDateOrTime ? "text-club-red mt-6 mb-2 text-2xl font-black" : ""}>
                       {line}
                     </div>
                   );
                 })
               ) : (
-                <span className="opacity-50">Texte d'exemple...</span>
+                <span className="opacity-50 text-slate-400">Texte d'exemple...</span>
               )}
             </div>
           </div>
-          
-          {/* Ligne décorative à gauche */}
-          <div className="absolute top-0 bottom-0 left-8 w-2 bg-black z-0 rounded-full"></div>
         </div>
       </div>
     </div>
