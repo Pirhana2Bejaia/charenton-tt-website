@@ -9,6 +9,7 @@ import {
   GraduationCap,
   TrendingUp,
   CalendarDays,
+  Lightbulb,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -61,6 +62,13 @@ const sections = [
     href: '/admin/dashboard/rencontres',
     icon: CalendarDays,
     color: 'bg-emerald-50 text-emerald-600',
+  },
+  {
+    title: 'Bon à Savoir',
+    description: 'Infos pratiques accueil',
+    href: '/admin/dashboard/bon-a-savoir',
+    icon: Lightbulb,
+    color: 'bg-amber-50 text-amber-500',
   },
 ];
 
