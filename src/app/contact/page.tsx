@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, MapPin, Phone, Mail, Facebook } from 'lucide-react';
+import { Send, MapPin, Phone, Mail, Instagram } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function Contact() {
@@ -172,13 +172,13 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 shrink-0 bg-[#1877F2]/10 text-[#1877F2] rounded-2xl flex items-center justify-center">
-                    <Facebook size={24} />
+                  <div className="w-14 h-14 shrink-0 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center">
+                    <Instagram size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg text-slate-900 mb-1">Réseaux Sociaux</h3>
-                    <a href="https://www.facebook.com/charenton.tt/" target="_blank" rel="noopener noreferrer" className="text-club-blue hover:underline">
-                      Facebook Charenton TT
+                    <a href="https://www.instagram.com/charentontt/" target="_blank" rel="noopener noreferrer" className="text-club-blue hover:underline">
+                      Instagram Charenton TT
                     </a>
                   </div>
                 </div>

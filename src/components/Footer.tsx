@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { MapPin, Phone, Mail, Facebook, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Youtube, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -61,13 +61,22 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 text-sm">
               <a
-                href="https://www.facebook.com/charenton.tt/"
+                href="https://www.instagram.com/charentontt/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-blue-200 hover:text-white transition-colors"
               >
-                <Facebook size={16} />
-                Facebook
+                <Instagram size={16} />
+                Instagram
+              </a>
+              <a
+                href="https://www.youtube.com/@CharentonTT"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-200 hover:text-white transition-colors"
+              >
+                <Youtube size={16} />
+                YouTube
               </a>
               <a
                 href="https://www.fftt.com"
