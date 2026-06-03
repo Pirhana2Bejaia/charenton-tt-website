@@ -48,9 +48,30 @@ export default function VieSportive() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-64 bg-slate-200 animate-pulse rounded-3xl" />
+            ))}
+          </div>
+        ) : teams.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+            {teams.map((team, idx) => (
+              <div key={team.id} className={`animate-fade-in-up stagger-${(idx % 5) + 1}`}>
+                <TeamCard team={team} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24 bg-white rounded-3xl border border-slate-100 shadow-sm mb-24">
+            <h3 className="text-xl font-bold text-slate-400 mb-2">Aucune équipe pour le moment</h3>
+            <p className="text-slate-500">Les équipes seront bientôt affichées.</p>
+          </div>
+        )}
+
         {/* Panneau Prochaines Rencontres */}
         {rencontres && (
-          <div className="mb-24 max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <div className="bg-gradient-to-br from-slate-900 to-club-blue-dark rounded-[2.5rem] py-12 px-6 shadow-2xl border border-slate-700/50 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-club-blue rounded-full blur-3xl opacity-20 z-0" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-club-red rounded-full blur-3xl opacity-10 z-0" />
@@ -71,10 +92,8 @@ export default function VieSportive() {
                 
                 <div className="text-lg md:text-xl font-medium leading-relaxed whitespace-pre-wrap flex flex-col gap-1">
                   {rencontres.split('\n').map((line, i) => {
-                    const isDateOrTime = line.toUpperCase().includes('VENDREDI') || 
-                                       line.toUpperCase().includes('SAMEDI') || 
-                                       line.toUpperCase().includes('DIMANCHE') || 
-                                       (line.toUpperCase().includes('H') && /\d/.test(line));
+                    const isDateOrTime = /^(LUNDI|MARDI|MERCREDI|JEUDI|VENDREDI|SAMEDI|DIMANCHE)\b/i.test(line.trim()) || 
+                                       /^\d{1,2}H\d{0,2}/i.test(line.trim());
                     return (
                       <div key={i} className={isDateOrTime ? "text-club-red mt-6 mb-2 text-2xl font-black" : "text-slate-200"}>
                         {line}
@@ -87,26 +106,6 @@ export default function VieSportive() {
           </div>
         )}
 
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="h-64 bg-slate-200 animate-pulse rounded-3xl" />
-            ))}
-          </div>
-        ) : teams.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teams.map((team, idx) => (
-              <div key={team.id} className={`animate-fade-in-up stagger-${(idx % 5) + 1}`}>
-                <TeamCard team={team} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-24 bg-white rounded-3xl border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-400 mb-2">Aucune équipe pour le moment</h3>
-            <p className="text-slate-500">Les équipes seront bientôt affichées.</p>
-          </div>
-        )}
       </div>
     </div>
   );

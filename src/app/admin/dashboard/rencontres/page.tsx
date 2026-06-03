@@ -59,7 +59,8 @@ export default function AdminRencontres() {
           <label className="block text-sm font-medium mb-4 text-club-blue">Texte des rencontres</label>
           <p className="text-xs text-slate-400 mb-4">
             Modèle suggéré (tapez Entrée pour passer à la ligne) :<br/><br/>
-            VENDREDI 15 MAI - 20H30<br/>
+            VENDREDI 15 MAI<br/>
+            20H30<br/>
             CHAMPIONNAT DE PARIS<br/>
             EXCELLENCE VS MAISONS ALFORT<br/>
             HONNEUR VS US PARIS 2
@@ -71,7 +72,7 @@ export default function AdminRencontres() {
               className="admin-input flex-1 font-mono text-sm resize-none mb-4 p-4 leading-relaxed"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="VENDREDI 15 MAI - 20H30&#10;CHAMPIONNAT DE PARIS&#10;EXCELLENCE VS MAISONS ALFORT"
+              placeholder="VENDREDI 15 MAI&#10;20H30&#10;CHAMPIONNAT DE PARIS&#10;EXCELLENCE VS MAISONS ALFORT"
             />
           )}
           <button 
@@ -107,10 +108,8 @@ export default function AdminRencontres() {
             <div className="text-lg font-medium leading-relaxed flex flex-col gap-1 text-slate-200">
               {content ? (
                 content.split('\n').map((line, i) => {
-                  const isDateOrTime = line.toUpperCase().includes('VENDREDI') || 
-                                     line.toUpperCase().includes('SAMEDI') || 
-                                     line.toUpperCase().includes('DIMANCHE') || 
-                                     (line.toUpperCase().includes('H') && /\d/.test(line));
+                  const isDateOrTime = /^(LUNDI|MARDI|MERCREDI|JEUDI|VENDREDI|SAMEDI|DIMANCHE)\b/i.test(line.trim()) || 
+                                     /^\d{1,2}H\d{0,2}/i.test(line.trim());
                   return (
                     <div key={i} className={isDateOrTime ? "text-club-red mt-6 mb-2 text-2xl font-black" : ""}>
                       {line}
