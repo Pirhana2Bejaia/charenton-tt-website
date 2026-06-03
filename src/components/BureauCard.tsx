@@ -6,7 +6,7 @@ export default function BureauCard({ member }: { member: BureauMember }) {
 
   return (
     <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all border border-slate-100 text-center flex flex-col items-center group">
-      <div className="w-32 h-32 rounded-full mb-6 overflow-hidden border-4 border-slate-50 shadow-inner group-hover:border-club-blue/10 transition-colors">
+      <div className="w-40 h-40 rounded-full mb-6 overflow-hidden border-4 border-slate-50 shadow-inner group-hover:border-club-blue/10 transition-colors">
         {member.photo_url ? (
           <img 
             src={member.photo_url} 
