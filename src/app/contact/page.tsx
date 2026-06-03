@@ -185,17 +185,7 @@ export default function Contact() {
               </div>
             </div>
             
-            {/* Map (Placeholder for a real map or just an illustration) */}
-            <div className="w-full h-64 bg-slate-200 rounded-[2rem] overflow-hidden relative">
-              <img 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" 
-                alt="Map" 
-                className="w-full h-full object-cover opacity-60 mix-blend-multiply"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-club-blue/80 to-transparent flex items-end p-6">
-                <span className="text-white font-bold">Charenton-le-Pont</span>
-              </div>
-            </div>
+
           </div>
 
         </div>
