@@ -8,6 +8,7 @@ import {
   FileDown,
   GraduationCap,
   TrendingUp,
+  CalendarDays,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -53,6 +54,13 @@ const sections = [
     href: '/admin/dashboard/stages',
     icon: GraduationCap,
     color: 'bg-orange-50 text-orange-600',
+  },
+  {
+    title: 'Rencontres',
+    description: 'Matchs à domicile',
+    href: '/admin/dashboard/rencontres',
+    icon: CalendarDays,
+    color: 'bg-emerald-50 text-emerald-600',
   },
 ];
 
