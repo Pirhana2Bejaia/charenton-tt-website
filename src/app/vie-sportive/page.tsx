@@ -6,16 +6,25 @@ import { Team } from '@/lib/types';
 
 export default function VieSportive() {
   const [teams, setTeams] = useState<Team[]>([]);
+  const [rencontres, setRencontres] = useState<string>('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchTeams() {
+    async function fetchData() {
       setLoading(true);
       try {
-        const res = await fetch('/api/equipes');
-        if (res.ok) {
-          const data = await res.json();
+        const resTeams = await fetch('/api/equipes');
+        if (resTeams.ok) {
+          const data = await resTeams.json();
           setTeams(data || []);
+        }
+
+        const resRencontres = await fetch('/api/content?key=prochaines_rencontres');
+        if (resRencontres.ok) {
+          const data = await resRencontres.json();
+          if (data && data.content) {
+            setRencontres(data.content);
+          }
         }
       } catch (error) {
         console.error('Erreur:', error);
@@ -24,7 +33,7 @@ export default function VieSportive() {
         setLoading(false);
       }
     }
-    fetchTeams();
+    fetchData();
   }, []);
 
   return (
@@ -38,6 +47,40 @@ export default function VieSportive() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* Panneau Prochaines Rencontres */}
+        {rencontres && (
+          <div className="mb-24 max-w-md mx-auto">
+            <div className="bg-[#dea01e] rounded-[3rem] py-12 px-6 shadow-2xl border-[8px] border-club-blue relative overflow-hidden">
+              {/* Ligne noire à gauche */}
+              <div className="absolute top-10 bottom-10 left-6 w-1.5 bg-black z-0"></div>
+              
+              <div className="text-center relative z-10 pl-6 space-y-4">
+                <h2 className="text-[22px] font-black text-black uppercase tracking-widest italic leading-tight">
+                  PROCHAINES RENCONTRES
+                </h2>
+                <h3 className="text-xl font-black text-black uppercase tracking-widest italic mb-10">
+                  A CHARENTON
+                </h3>
+                
+                <div className="text-lg font-black leading-snug whitespace-pre-wrap flex flex-col gap-2">
+                  {rencontres.split('\n').map((line, i) => {
+                    const isDateOrTime = line.toUpperCase().includes('VENDREDI') || 
+                                       line.toUpperCase().includes('SAMEDI') || 
+                                       line.toUpperCase().includes('DIMANCHE') || 
+                                       (line.toUpperCase().includes('H') && /\d/.test(line));
+                    return (
+                      <div key={i} className={isDateOrTime ? "text-[#ed3232] mt-6 mb-2 text-2xl italic font-black" : "italic text-black"}>
+                        {line}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map(i => (

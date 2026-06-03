@@ -12,6 +12,7 @@ import {
   GraduationCap,
   History,
   LogOut,
+  CalendarDays,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -24,6 +25,7 @@ const menuItems = [
   { href: '/admin/dashboard/inscriptions', label: 'Inscriptions', icon: FileDown },
   { href: '/admin/dashboard/stages', label: 'Stages', icon: GraduationCap },
   { href: '/admin/dashboard/historique', label: 'Historique', icon: History },
+  { href: '/admin/dashboard/rencontres', label: 'Rencontres', icon: CalendarDays },
 ];
 
 export default function AdminSidebar() {
