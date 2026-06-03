@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <div className="pb-24">
       {/* Hero */}
-      <div className="w-[92%] max-w-6xl mx-auto bg-gradient-to-br from-club-blue to-club-blue-dark py-16 px-4 mt-6 mb-16 rounded-[3rem] shadow-xl text-center">
+      <div className="bg-gradient-to-br from-club-blue to-club-blue-dark py-10 px-4 mb-16 rounded-b-[3rem] shadow-xl text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Contactez-nous</h1>
         <p className="text-xl text-blue-100 max-w-2xl mx-auto font-light">
           Une question ? Envie de nous rejoindre ? N'hésitez pas à nous écrire.
