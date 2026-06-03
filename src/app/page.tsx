@@ -90,22 +90,18 @@ export default function Home() {
         {/* Bon à Savoir */}
         {bonASavoir && (
           <div className="mb-16">
-            <div className="bg-amber-50 rounded-[2rem] p-8 md:p-10 border border-amber-200/50 shadow-sm relative overflow-hidden flex flex-col md:flex-row gap-8 items-start">
-              <div className="absolute top-0 left-0 w-2 h-full bg-amber-400" />
+            <div className="relative pl-6 py-2">
+              {/* Ligne verticale jaune plus foncée */}
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500 rounded-full" />
               
-              <div className="shrink-0 bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm border border-amber-100 text-3xl z-10">
-                💡
-              </div>
-              
-              <div className="flex-1 relative z-10">
-                <h2 className="text-2xl font-bold text-amber-900 mb-4">Bon à Savoir</h2>
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+                  Bon à Savoir : <span className="text-2xl">💡</span>
+                </h2>
                 <div className="text-slate-700 text-lg font-medium leading-relaxed whitespace-pre-wrap">
                   {bonASavoir}
                 </div>
               </div>
-              
-              {/* Decorative circle */}
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-amber-400 rounded-full blur-3xl opacity-10 pointer-events-none" />
             </div>
           </div>
         )}

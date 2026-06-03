@@ -81,16 +81,15 @@ export default function AdminBonASavoir() {
         </div>
 
         {/* Aperçu */}
-        <div className="bg-amber-50 rounded-3xl p-8 border border-amber-200/50 shadow-sm h-[600px] overflow-y-auto">
-          <h3 className="font-bold text-amber-900/50 uppercase tracking-wider text-sm mb-6 border-b border-amber-200 pb-4">Aperçu en direct</h3>
+        <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm h-[600px] overflow-y-auto">
+          <h3 className="font-bold text-slate-400 uppercase tracking-wider text-sm mb-6 border-b border-slate-100 pb-4">Aperçu en direct</h3>
           
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-2 h-full bg-amber-400" />
-            <h3 className="text-xl font-bold text-amber-500 flex items-center gap-2 mb-4">
-              <span className="text-2xl">💡</span>
-              Bon à Savoir
+          <div className="relative pl-6 py-2">
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500 rounded-full" />
+            <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2 mb-2">
+              Bon à Savoir : <span className="text-2xl">💡</span>
             </h3>
-            <div className="text-slate-600 font-medium whitespace-pre-wrap leading-relaxed pl-2">
+            <div className="text-slate-600 font-medium whitespace-pre-wrap leading-relaxed">
               {content || <span className="opacity-50 italic">Entrez votre texte ici...</span>}
             </div>
           </div>
