@@ -32,13 +32,13 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-slate-200/60 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-extrabold text-xl tracking-tight hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 font-extrabold text-2xl tracking-tight hover:opacity-80 transition-opacity"
           >
-            <img src="/logo.png" alt="Logo Charenton TT" className="w-10 h-12 object-contain" />
+            <img src="/logo.png" alt="Logo Charenton TT" className="h-16 w-auto md:h-20 object-contain drop-shadow-sm" />
             <span className="text-club-blue">
               Charenton<span className="text-club-red">TT</span>
             </span>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2.5 rounded-xl text-base font-semibold transition-all duration-200 ${
                     isActive
                       ? 'text-club-blue bg-blue-50'
                       : 'text-slate-600 hover:text-club-blue hover:bg-slate-50'
@@ -89,7 +89,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  className={`block px-4 py-4 rounded-xl text-base font-semibold transition-all ${
                     isActive
                       ? 'text-club-blue bg-blue-50'
                       : 'text-slate-600 hover:bg-slate-50'
