@@ -96,7 +96,7 @@ export default function Home() {
               
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
-                  Bon à Savoir : <span className="text-2xl">💡</span>
+                  <span className="text-2xl">💡</span> Bon à Savoir :
                 </h2>
                 <div className="text-slate-700 text-lg font-medium leading-relaxed whitespace-pre-wrap">
                   {bonASavoir}
