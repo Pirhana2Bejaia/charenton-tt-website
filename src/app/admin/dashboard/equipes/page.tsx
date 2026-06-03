@@ -85,7 +85,7 @@ export default function AdminEquipes() {
               <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="admin-input" />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Poule (ex: Poule A)</label>
+              <label className="block text-sm font-medium mb-2">Numéro de l'équipe (ex: 5)</label>
               <input required type="text" value={formData.pool} onChange={e => setFormData({...formData, pool: e.target.value})} className="admin-input" />
             </div>
           </div>
@@ -140,7 +140,9 @@ export default function AdminEquipes() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="font-bold text-lg">{t.name}</h3>
-                  <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-md mt-1">{t.pool}</span>
+                  <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md mt-1">
+                    n°{t.pool.replace(/^(n°|poule)\s*/i, '').trim()}
+                  </span>
                 </div>
                 <div className="flex gap-2">
                   <button onClick={() => handleEdit(t)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit2 size={16} /></button>

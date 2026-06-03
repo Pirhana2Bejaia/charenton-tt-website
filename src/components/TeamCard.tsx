@@ -8,7 +8,7 @@ export default function TeamCard({ team }: { team: Team }) {
       <div className="flex justify-between items-start mb-6 gap-4">
         <h3 className="font-extrabold text-2xl text-slate-900">{team.name}</h3>
         <span className="px-3 py-1 bg-club-blue text-white text-xs font-bold rounded-full uppercase tracking-wider text-center shrink-0">
-          {team.pool}
+          n°{team.pool.replace(/^(n°|poule)\s*/i, '').trim()}
         </span>
       </div>
       
