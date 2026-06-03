@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { Download, FileDown, MapPin, Mail, Phone } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
 import { Document } from '@/lib/types';
 
 export default function Inscriptions() {
@@ -12,16 +11,16 @@ export default function Inscriptions() {
   useEffect(() => {
     async function fetchDocs() {
       try {
-        const { data, error } = await supabase
-          .from('documents')
-          .select('*')
-          .eq('type', 'inscription')
-          .order('order_index');
-          
-        if (error) throw error;
-        setDocuments(data || []);
+        const res = await fetch('/api/documents?type=inscription');
+        if (res.ok) {
+          const data: Document[] = await res.json();
+          setDocuments(data);
+        } else {
+          setDocuments([]);
+        }
       } catch (error) {
         console.error('Error:', error);
+        setDocuments([]);
       } finally {
         setLoading(false);
       }
@@ -71,8 +70,8 @@ export default function Inscriptions() {
           </div>
         ) : (
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-100 shadow-sm mb-16">
-            <h3 className="text-xl font-bold text-slate-400 mb-2">Formulaires bientôt disponibles</h3>
-            <p className="text-slate-500">Les formulaires d'inscription pour la prochaine saison seront mis en ligne prochainement.</p>
+            <h3 className="text-xl font-bold text-slate-400 mb-2">Les formulaires d&apos;inscription seront bientôt disponibles.</h3>
+            <p className="text-slate-500">Les formulaires d&apos;inscription pour la prochaine saison seront mis en ligne prochainement.</p>
           </div>
         )}
 

@@ -1,0 +1,36 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[427],{2083:function(e,t,s){Promise.resolve().then(s.bind(s,6424))},9768:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("FileDown",[["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",key:"1rqfz7"}],["path",{d:"M14 2v4a2 2 0 0 0 2 2h4",key:"tnqrlb"}],["path",{d:"M12 18v-6",key:"17g6i2"}],["path",{d:"m9 15 3 3 3-3",key:"1npd3o"}]])},2023:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("FileText",[["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",key:"1rqfz7"}],["path",{d:"M14 2v4a2 2 0 0 0 2 2h4",key:"tnqrlb"}],["path",{d:"M10 9H8",key:"b1mrlr"}],["path",{d:"M16 13H8",key:"t4e002"}],["path",{d:"M16 17H8",key:"z1uh3a"}]])},6198:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("GraduationCap",[["path",{d:"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z",key:"j76jl0"}],["path",{d:"M22 10v6",key:"1lu8f3"}],["path",{d:"M6 12.5V16a6 3 0 0 0 12 0v-3.5",key:"1r8lef"}]])},6143:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("Megaphone",[["path",{d:"m3 11 18-5v12L3 14v-3z",key:"n962bs"}],["path",{d:"M11.6 16.8a3 3 0 1 1-5.8-1.6",key:"1yl0tm"}]])},5016:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("Trophy",[["path",{d:"M6 9H4.5a2.5 2.5 0 0 1 0-5H6",key:"17hqa7"}],["path",{d:"M18 9h1.5a2.5 2.5 0 0 0 0-5H18",key:"lmptdp"}],["path",{d:"M4 22h16",key:"57wxv0"}],["path",{d:"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22",key:"1nw9bq"}],["path",{d:"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22",key:"1np0yb"}],["path",{d:"M18 2H6v7a6 6 0 0 0 12 0V2Z",key:"u46fv3"}]])},1240:function(e,t,s){"use strict";s.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,s(8030).Z)("Users",[["path",{d:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",key:"1yyitq"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}],["path",{d:"M22 21v-2a4 4 0 0 0-3-3.87",key:"kshegd"}],["path",{d:"M16 3.13a4 4 0 0 1 0 7.75",key:"1da9ce"}]])},6424:function(e,t,s){"use strict";s.r(t),s.d(t,{default:function(){return x}});var a=s(7437),i=s(2023),l=s(6143),n=s(1240),r=s(5016),d=s(9768),c=s(6198);/**
+ * @license lucide-react v0.378.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let o=(0,s(8030).Z)("TrendingUp",[["polyline",{points:"22 7 13.5 15.5 8.5 10.5 2 17",key:"126l90"}],["polyline",{points:"16 7 22 7 22 13",key:"kwv8wd"}]]);var u=s(7138);let h=[{title:"Posts",description:"G\xe9rer les publications du club",href:"/admin/dashboard/posts",icon:i.Z,color:"bg-blue-50 text-blue-600"},{title:"Bandeau Actualit\xe9",description:"Modifier le bandeau d\xe9filant",href:"/admin/dashboard/ticker",icon:l.Z,color:"bg-red-50 text-red-600"},{title:"Bureau",description:"Membres du bureau du club",href:"/admin/dashboard/bureau",icon:n.Z,color:"bg-green-50 text-green-600"},{title:"\xc9quipes",description:"\xc9quipes et compositions",href:"/admin/dashboard/equipes",icon:r.Z,color:"bg-yellow-50 text-yellow-600"},{title:"Inscriptions",description:"Formulaires d'inscription",href:"/admin/dashboard/inscriptions",icon:d.Z,color:"bg-purple-50 text-purple-600"},{title:"Stages",description:"Fiches de stage",href:"/admin/dashboard/stages",icon:c.Z,color:"bg-orange-50 text-orange-600"}];function x(){return(0,a.jsxs)("div",{children:[(0,a.jsxs)("div",{className:"mb-8",children:[(0,a.jsx)("h1",{className:"text-3xl font-bold text-slate-900",children:"Tableau de bord"}),(0,a.jsx)("p",{className:"text-slate-500 mt-1",children:"Bienvenue dans l'administration du site Charenton TT"})]}),(0,a.jsxs)("div",{className:"grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8",children:[(0,a.jsxs)("div",{className:"admin-card flex items-center gap-4",children:[(0,a.jsx)("div",{className:"w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center",children:(0,a.jsx)(i.Z,{className:"text-blue-600",size:22})}),(0,a.jsxs)("div",{children:[(0,a.jsx)("p",{className:"text-2xl font-bold text-slate-900",children:"—"}),(0,a.jsx)("p",{className:"text-sm text-slate-500",children:"Posts publi\xe9s"})]})]}),(0,a.jsxs)("div",{className:"admin-card flex items-center gap-4",children:[(0,a.jsx)("div",{className:"w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center",children:(0,a.jsx)(n.Z,{className:"text-green-600",size:22})}),(0,a.jsxs)("div",{children:[(0,a.jsx)("p",{className:"text-2xl font-bold text-slate-900",children:"—"}),(0,a.jsx)("p",{className:"text-sm text-slate-500",children:"Membres bureau"})]})]}),(0,a.jsxs)("div",{className:"admin-card flex items-center gap-4",children:[(0,a.jsx)("div",{className:"w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center",children:(0,a.jsx)(r.Z,{className:"text-yellow-600",size:22})}),(0,a.jsxs)("div",{children:[(0,a.jsx)("p",{className:"text-2xl font-bold text-slate-900",children:"—"}),(0,a.jsx)("p",{className:"text-sm text-slate-500",children:"\xc9quipes"})]})]})]}),(0,a.jsx)("h2",{className:"text-lg font-semibold text-slate-900 mb-4",children:"Gestion du contenu"}),(0,a.jsx)("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4",children:h.map(e=>{let t=e.icon;return(0,a.jsx)(u.default,{href:e.href,children:(0,a.jsx)("div",{className:"admin-card group cursor-pointer",children:(0,a.jsxs)("div",{className:"flex items-start gap-4",children:[(0,a.jsx)("div",{className:"w-10 h-10 rounded-xl flex items-center justify-center ".concat(e.color),children:(0,a.jsx)(t,{size:20})}),(0,a.jsxs)("div",{className:"flex-1",children:[(0,a.jsx)("h3",{className:"font-semibold text-slate-900 group-hover:text-club-blue transition-colors",children:e.title}),(0,a.jsx)("p",{className:"text-sm text-slate-500 mt-0.5",children:e.description})]}),(0,a.jsx)(o,{size:16,className:"text-slate-300 group-hover:text-club-blue transition-colors mt-1"})]})})},e.href)})})]})}}},function(e){e.O(0,[48,971,23,560],function(){return e(e.s=2083)}),_N_E=e.O()}]);

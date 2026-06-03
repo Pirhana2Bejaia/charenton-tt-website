@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import TeamCard from '@/components/TeamCard';
-import { supabase } from '@/lib/supabase';
 import { Team } from '@/lib/types';
-
-const DEMO_TEAMS: Team[] = [
-  { id: '1', name: 'Nationale 2', pool: 'Poule A', players: ['Arthur D.', 'Martin S.', 'Luc P.'], order_index: 0 },
-  { id: '2', name: 'Régionale 1', pool: 'Poule B', players: ['Thomas L.', 'Kevin R.', 'Marc E.'], order_index: 1 },
-  { id: '3', name: 'Excellence Paris', pool: 'Poule C', players: ['Paul J.', 'Simon M.'], order_index: 2 },
-];
 
 export default function VieSportive() {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -19,16 +12,14 @@ export default function VieSportive() {
     async function fetchTeams() {
       setLoading(true);
       try {
-        const { data, error } = await supabase
-          .from('teams')
-          .select('*')
-          .order('order_index');
-          
-        if (error) throw error;
-        setTeams(data && data.length > 0 ? data : DEMO_TEAMS);
+        const res = await fetch('/api/equipes');
+        if (res.ok) {
+          const data = await res.json();
+          setTeams(data || []);
+        }
       } catch (error) {
-        console.error('Error:', error);
-        setTeams(DEMO_TEAMS);
+        console.error('Erreur:', error);
+        setTeams([]);
       } finally {
         setLoading(false);
       }
@@ -62,8 +53,9 @@ export default function VieSportive() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-24">
+          <div className="text-center py-24 bg-white rounded-3xl border border-slate-100 shadow-sm">
             <h3 className="text-xl font-bold text-slate-400 mb-2">Aucune équipe pour le moment</h3>
+            <p className="text-slate-500">Les équipes seront bientôt affichées.</p>
           </div>
         )}
       </div>

@@ -5,43 +5,7 @@ import TickerBanner from '@/components/TickerBanner';
 import PostCard from '@/components/PostCard';
 import PostModal from '@/components/PostModal';
 import YearFilter from '@/components/YearFilter';
-import { supabase } from '@/lib/supabase';
 import { Post, TickerItem } from '@/lib/types';
-
-const DEMO_TICKER: TickerItem[] = [
-  { id: '1', text: 'Victoire de la Nationale 2 ce weekend !', active: true, order_index: 0, image_url: null, link: null },
-  { id: '2', text: 'Inscriptions ouvertes pour la saison prochaine', active: true, order_index: 1, image_url: null, link: '/inscriptions' },
-];
-
-const DEMO_POSTS: Post[] = [
-  {
-    id: '1',
-    title: 'L\'équipe première Championne !',
-    description: 'Notre équipe de Nationale a brillamment remporté le titre ce weekend.',
-    date: '2026-05-15',
-    year: 2026,
-    images: ['https://images.unsplash.com/photo-1534158914592-062992fbe900?q=80&w=1000&auto=format&fit=crop'],
-    created_at: new Date().toISOString()
-  },
-  {
-    id: '2',
-    title: 'Nouveau gymnase inauguré',
-    description: 'Les travaux sont finis, nous avons de nouvelles tables.',
-    date: '2026-03-10',
-    year: 2026,
-    images: ['https://images.unsplash.com/photo-1611250282006-4484dd3fba6b?q=80&w=1000&auto=format&fit=crop'],
-    created_at: new Date().toISOString()
-  },
-  {
-    id: '3',
-    title: 'Stage d\'hiver',
-    description: 'Retour en images sur le stage d\'hiver des jeunes.',
-    date: '2025-12-20',
-    year: 2025,
-    images: ['https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?q=80&w=1000&auto=format&fit=crop'],
-    created_at: new Date().toISOString()
-  }
-];
 
 export default function Home() {
   const [tickerItems, setTickerItems] = useState<TickerItem[]>([]);
@@ -49,73 +13,52 @@ export default function Home() {
   const [years, setYears] = useState<number[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
   const [loading, setLoading] = useState(true);
-  
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // Ticker
-        const { data: tickerData, error: tickerError } = await supabase
-          .from('ticker_items')
-          .select('*')
-          .eq('active', true)
-          .order('order_index');
-          
-        if (tickerError) throw tickerError;
-        setTickerItems(tickerData && tickerData.length > 0 ? tickerData : DEMO_TICKER);
-
-        // Years
-        const { data: yearsData, error: yearsError } = await supabase
-          .from('posts')
-          .select('year');
-          
-        if (yearsError) throw yearsError;
-        
-        const uniqueYears = Array.from(new Set(yearsData?.map(d => d.year) || []))
-          .sort((a, b) => b - a); // Descending
-          
-        if (uniqueYears.length > 0) {
-          setYears(uniqueYears);
-          if (!uniqueYears.includes(selectedYear)) {
-            setSelectedYear(uniqueYears[0]);
-          }
-        } else {
-          setYears([2026, 2025]);
-          setSelectedYear(2026);
+        // Fetch ticker via API route
+        const tickerRes = await fetch('/api/ticker');
+        if (tickerRes.ok) {
+          const tickerData = await tickerRes.json();
+          const activeItems = (tickerData || []).filter((t: TickerItem) => t.active);
+          setTickerItems(activeItems);
         }
 
+        // Fetch all posts to extract years
+        const postsRes = await fetch('/api/posts');
+        if (postsRes.ok) {
+          const allPosts: Post[] = await postsRes.json();
+          const uniqueYears = Array.from(new Set(allPosts.map(p => p.year)))
+            .sort((a, b) => b - a);
+          if (uniqueYears.length > 0) {
+            setYears(uniqueYears);
+            if (!uniqueYears.includes(selectedYear)) {
+              setSelectedYear(uniqueYears[0]);
+            }
+          }
+        }
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setTickerItems(DEMO_TICKER);
-        setYears([2026, 2025]);
+        console.error('Erreur chargement données:', error);
       }
     }
-    
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     async function fetchPosts() {
       setLoading(true);
       try {
-        const { data: postsData, error: postsError } = await supabase
-          .from('posts')
-          .select('*')
-          .eq('year', selectedYear)
-          .order('date', { ascending: false });
-          
-        if (postsError) throw postsError;
-        
-        if (postsData && postsData.length > 0) {
-          setPosts(postsData);
-        } else {
-          // Use demo data filtered by year if Supabase is empty
-          setPosts(DEMO_POSTS.filter(p => p.year === selectedYear));
+        const res = await fetch(`/api/posts?year=${selectedYear}`);
+        if (res.ok) {
+          const data = await res.json();
+          setPosts(data || []);
         }
       } catch (error) {
-        console.error('Error fetching posts:', error);
-        setPosts(DEMO_POSTS.filter(p => p.year === selectedYear));
+        console.error('Erreur chargement posts:', error);
+        setPosts([]);
       } finally {
         setLoading(false);
       }
@@ -123,6 +66,8 @@ export default function Home() {
 
     if (years.length > 0) {
       fetchPosts();
+    } else {
+      setLoading(false);
     }
   }, [selectedYear, years]);
 
@@ -141,11 +86,13 @@ export default function Home() {
         </div>
 
         {/* Filtre Années */}
-        <YearFilter 
-          years={years} 
-          selectedYear={selectedYear} 
-          onSelectYear={setSelectedYear} 
-        />
+        {years.length > 0 && (
+          <YearFilter 
+            years={years} 
+            selectedYear={selectedYear} 
+            onSelectYear={setSelectedYear} 
+          />
+        )}
 
         {/* Grille de Posts */}
         {loading ? (
@@ -167,8 +114,8 @@ export default function Home() {
           </div>
         ) : (
           <div className="text-center py-24 bg-white rounded-3xl border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-400 mb-2">Aucun post pour cette année</h3>
-            <p className="text-slate-500">Revenez plus tard pour de nouvelles actualités.</p>
+            <h3 className="text-xl font-bold text-slate-400 mb-2">Aucun post pour le moment</h3>
+            <p className="text-slate-500">Ajoutez du contenu depuis le panneau d&apos;administration.</p>
           </div>
         )}
       </div>

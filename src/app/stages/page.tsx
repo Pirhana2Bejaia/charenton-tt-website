@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { Download, FileDown, Info } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
 import { Document } from '@/lib/types';
 
 export default function Stages() {
@@ -12,16 +11,16 @@ export default function Stages() {
   useEffect(() => {
     async function fetchDocs() {
       try {
-        const { data, error } = await supabase
-          .from('documents')
-          .select('*')
-          .eq('type', 'stage')
-          .order('order_index');
-          
-        if (error) throw error;
-        setDocuments(data || []);
+        const res = await fetch('/api/documents?type=stage');
+        if (res.ok) {
+          const data: Document[] = await res.json();
+          setDocuments(data);
+        } else {
+          setDocuments([]);
+        }
       } catch (error) {
         console.error('Error:', error);
+        setDocuments([]);
       } finally {
         setLoading(false);
       }
@@ -74,8 +73,8 @@ export default function Stages() {
             <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
               <Info size={32} className="text-slate-400" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">Aucun stage actuellement</h3>
-            <p className="text-slate-500">Les fiches d'inscription pour les prochains stages seront publiées ici à l'approche des vacances scolaires.</p>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Les fiches de stage seront bientôt disponibles.</h3>
+            <p className="text-slate-500">Les fiches d&apos;inscription pour les prochains stages seront publiées ici à l&apos;approche des vacances scolaires.</p>
           </div>
         )}
 
