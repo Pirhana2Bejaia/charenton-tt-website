@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --club-blue: #1a365d;
+    --club-blue-light: #2a4a7f;
+    --club-blue-dark: #0f2340;
+    --club-red: #e53e3e;
+    --club-red-light: #fc5c5c;
+    --club-red-dark: #c53030;
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --card: #ffffff;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   Ticker Banner Animation
+   ========================================== */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-animate {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+.ticker-animate:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================
+   Post Grid & Modal
+   ========================================== */
+.post-grid-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.post-grid-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-grid-item:hover::after {
+  opacity: 1;
+}
+
+.post-grid-item:hover img {
+  transform: scale(1.05);
+}
+
+.post-grid-item img {
+  transition: transform 0.5s ease;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================
+   Scrollbar Styling
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ==========================================
+   Iframe container
+   ========================================== */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.iframe-container iframe {
+  width: 100%;
+  min-height: 600px;
+  border: none;
+}
+
+/* ==========================================
+   Admin Styles
+   ========================================== */
+.admin-card {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-input:focus {
+  border-color: var(--club-blue);
+  box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-btn-primary {
+  background: var(--club-blue);
+  color: white;
+}
+
+.admin-btn-primary:hover {
+  background: var(--club-blue-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+}
+
+.admin-btn-danger {
+  background: var(--club-red);
+  color: white;
+}
+
+.admin-btn-danger:hover {
+  background: var(--club-red-dark);
+}
+
+.admin-btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.admin-btn-ghost:hover {
+  background: #f1f5f9;
+  color: var(--foreground);
+}
