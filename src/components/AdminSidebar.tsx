@@ -30,18 +30,19 @@ const menuItems = [
   { href: '/admin/dashboard/bon-a-savoir', label: 'Bon à Savoir', icon: Lightbulb },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
 
   async function handleLogout() {
     await fetch('/api/auth', { method: 'DELETE' });
     toast.success('Déconnecté');
+    if (onClose) onClose();
     router.push('/admin');
   }
 
   return (
-    <aside className="w-64 min-h-screen bg-white border-r border-slate-200 flex flex-col">
+    <aside className="w-64 h-full bg-white border-r border-slate-200 flex flex-col overflow-y-auto">
       {/* Header */}
       <div className="p-6 border-b border-slate-100">
         <Link href="/" className="flex items-center gap-2">
@@ -64,6 +65,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive
                   ? 'bg-club-blue text-white shadow-md shadow-club-blue/20'
